@@ -39,3 +39,96 @@
             `;
             productsContainer.appendChild(card);
         });
+
+// ===== Carousel population & behavior =====
+
+const customImages = [
+  { image: "https://i.ibb.co/SXYNs4vv/hindi-poster-offer.png", name: "Slide 1" },
+  { image: "https://i.ibb.co/yckd3NPC/hindi-poster-offer-packs.png", name: "Slide 2" },
+  { image: "https://i.ibb.co/RG7QN9mw/poster-offer.png", name: "Slide 3" },
+  { image: "https://i.ibb.co/yckd3NPC/hindi-poster-offer-packs.png", name: "Slide 4" },
+//   { image: "images/slide5.jpg", name: "Slide 5" },
+
+
+
+];
+
+// Use custom images instead of products
+
+(() => {
+    const carousel = document.getElementById('heroCarousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel__track');
+    const prevBtn = carousel.querySelector('.carousel__control--prev');
+    const nextBtn = carousel.querySelector('.carousel__control--next');
+    const nav = carousel.querySelector('.carousel__nav');
+
+    // Use first 5 products as featured slides (or fewer if not available)
+    // const slidesData = products.slice(0, Math.min(products.length, 5));
+    const slidesData = customImages.slice(0, 5);
+
+    slidesData.forEach((p, index) => {
+        const li = document.createElement('li');
+        li.className = 'carousel__slide';
+        li.setAttribute('data-index', index);
+        li.innerHTML = `<img src="${p.image}" alt="${p.name}">`;
+        track.appendChild(li);
+
+        const indicator = document.createElement('button');
+        indicator.className = 'carousel__indicator';
+        indicator.setAttribute('data-index', index);
+        if (index === 0) indicator.setAttribute('aria-current', 'true');
+        nav.appendChild(indicator);
+    });
+
+    const slides = Array.from(track.children);
+    const indicators = Array.from(nav.children);
+    let currentIndex = 0;
+    let autoplayId = null;
+
+    function updateCarousel(index) {
+        index = (index + slides.length) % slides.length;
+        const offset = index * -100;
+        track.style.transform = `translateX(${offset}%)`;
+        indicators.forEach(btn => btn.removeAttribute('aria-current'));
+        indicators[index].setAttribute('aria-current', 'true');
+        currentIndex = index;
+    }
+
+    function next() { updateCarousel(currentIndex + 1); }
+    function prev() { updateCarousel(currentIndex - 1); }
+
+    nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+    prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+
+    indicators.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idx = Number(e.currentTarget.getAttribute('data-index'));
+            updateCarousel(idx);
+            resetAutoplay();
+        });
+    });
+
+    // keyboard support
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+    });
+    carousel.tabIndex = 0;
+
+    // autoplay
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayId = setInterval(next, 3500);
+    }
+    function stopAutoplay() { if (autoplayId) { clearInterval(autoplayId); autoplayId = null; } }
+    function resetAutoplay() { stopAutoplay(); startAutoplay(); }
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    // init
+    updateCarousel(0);
+    startAutoplay();
+})();

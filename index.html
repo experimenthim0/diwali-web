@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GenZ Crackers Shop</title>
+  <title>GenZ Crackers Shop</title>
+  <!-- SEO & Social meta tags -->
+  <meta name="description" content="GenZ Crackers Shop — safe, colorful, and trendy fireworks for Diwali. Special packs, family deals and doorstep delivery around Nangal Mod. Contact: +91 8852912850" />
+  <meta name="keywords" content="Diwali crackers, fireworks, sparklers, family pack, GenZ Crackers, Akshita General Store, Nangal Mod" />
+  <meta name="author" content="GenZ Crackers Shop (Rajendra Yadav)" />
+  <link rel="canonical" href="https://diwali-web-mu.vercel.app/" />
+  <meta name="theme-color" content="#b02b48" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="GenZ Crackers Shop — Diwali Fireworks & Special Packs" />
+  <meta property="og:description" content="Shop safe and colorful fireworks — Kids Pack, Family Pack, GenZ Pack and more. Visit Akshita General Store or order for local delivery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://diwali-web-mu.vercel.app/" />
+  <meta property="og:image" content="https://img.freepik.com/free-vector/diwali-festival-offer-banner-with-diya_1017-15252.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GenZ Crackers Shop — Diwali Fireworks" />
+  <meta name="twitter:description" content="Safe, colorful fireworks and special festival packs. Contact +91 8852912850" />
+  <meta name="twitter:image" content="https://img.freepik.com/free-vector/diwali-festival-offer-banner-with-diya_1017-15252.jpg" />
+
+  <!-- Favicon (replace with your favicon path) -->
+  <link rel="icon" href="/lamp.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +43,28 @@
       </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <!-- <a href="products.html">Discounts</a> -->
-        <a href="diwali_web.html">Discounts & Payment</a>
+        <a href="./diwali_web.html">Discounts&Payment</a>
+      
       </div>
     </nav>
+   <section>
+    <!-- Carousel: displays featured product images -->
+    <div class="carousel" id="heroCarousel" aria-roledescription="carousel">
+      <button class="carousel__control carousel__control--prev" aria-label="Previous slide">◀</button>
+      <div class="carousel__track-container">
+        <ul class="carousel__track">
+          <!-- slides will be injected by script.js -->
+        </ul>
+      </div>
+      <button class="carousel__control carousel__control--next" aria-label="Next slide">▶</button>
+      <div class="carousel__nav" aria-hidden="false">
+        <!-- indicators will be injected by script.js -->
+      </div>
+    </div>
 
+   </section>
     <div class="offers-section">
-      <div class="offers-title">🎁 Special Offers 🎁</div>
+      <div class="offers-title">🎁 Special Offers & Packs 🎁</div>
       <div class="offer-item">
         <strong>Kids Pack:</strong> <b>₹299 </b>- Safe crackers for children
       </div>
@@ -35,97 +72,21 @@
         <strong>Family Pack:</strong> <b>₹599 </b>- Perfect for family celebration
       </div>
       <div class="offer-item">
-        <strong>GenZ Pack:</strong> <b>₹1299</b> - Trendy & colorful crackers
+        <strong>GenZ Pack:</strong> <b>₹799</b> - Trendy & colorful crackers
       </div>
       <div class="offer-item">
-        <strong>Power Pack:</strong> <b>₹1999</b> - High-intensity celebration
+        <strong>Power Pack:</strong> <b>₹1099</b> - High-intensity celebration
       </div>
       <div class="offer-item">
-        <strong>Free Gift:</strong> Above <b>₹299 </b>purchase*
+        <strong>Get Discount UPTO 10% OFF :</strong> Above <b>₹299 </b>purchase*
       </div>
     </div>
 
  <div id="productsContainer" class="grid"></div>
 
-    <!-- <div class="grid">
-     
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb thumb--blue"><img src="https://www.sonnyvinayagashop.com/wp-content/uploads/2021/09/IMG_20231002_183116__01-600x333.jpg" alt="" width="200"></div>
-        <div class="content">
-          <div class="title" >7G Assorted fountain(5 Piece)</div>
-          <div class="price">₹150</div>
-        </div>
-      </article>
+    
 
-      
-      <article class="card">
-        <div class="thumb thumb--image"></div>
-        <div class="content">
-          <div class="title">Field Photo</div>
-          <div class="price">₹150</div>
-          
-        </div>
-      </article>
-
-     
-    </div> -->
-  
+ <div style="margin-top: 20px; max-width: 350;"><img src="https://lh3.googleusercontent.com/pw/AP1GczNXDnEtBpEEZwXccGL1j1O5uDlVLkD6NvOTeBfGs5CEk7Lj37OWEdS2TlI2Y8BP9AU7Chs4kBlFhtJ2Q_bFgdwLO82n1XsAJUh1_-VxbomHtczhYv6jTb6uPpOFJaUjp_E1d0NzFoc0aPlQY7tRIkfk=w672-h856-s-no-gm?authuser=0" alt="payment"  width="350" ></div>
 
 
     
@@ -133,7 +94,7 @@
      <footer>
         <p style="font-size: 24px;"><strong> GenZ Crackers Shop </strong></p>
         <p> Contact: +91 8852912850 <br> (Rajendra Yadav)</p>
-        <p> Contact: +91 9667446393</p>
+        <p> Contact: +91 9667446393,7600024748</p>
         <p>📍 Location: Akshita General Store, Nangal Mod</p>
         <p>⏰ Open: 9 AM - 9 PM (Festival Season)</p>
         <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">© 2025 GenZ Crackers Shop. Wishing you a Happy Diwali!</p>
@@ -143,4 +104,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
