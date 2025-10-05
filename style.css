@@ -10,11 +10,11 @@
       background-color: #f4f4f4;
     }
 
-    nav {
+   nav {
       background: #b02b48;
       width: 100%;
       color: #fff;
-      padding: 10px 0;
+      padding: 5px 0;
       text-align: center;
       position: relative;
     }
@@ -27,6 +27,8 @@
       background: linear-gradient(135deg, rgba(250, 110, 23, 0.95), rgb(176, 43, 72));
       top: 0;
       border: none;
+      z-index: 1000;
+      padding: 3px 0;
       
     }
 
@@ -44,15 +46,14 @@
     nav .shop-name {
       font-size: 24px;
       font-weight: bold;
+
     }
 
-    nav .shop-name:hover {
-      color: #ffcc00;
-    }
+   
 
     nav .nav-links {
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 45px;
     }
 
     nav .nav-links a {
@@ -78,7 +79,8 @@
         
       }
       nav .shop-name{
-        font-size: 30px;
+        padding: 3px;
+        font-size: 20px;
       }
 
       nav .nav-links a {
@@ -156,7 +158,7 @@
       box-shadow: 0 14px 30px rgba(34, 34, 34, 0.08);
     }
 
-    .card .thumb {
+    .card .thumb ,.card .thumbn{
       border-radius: 10px;
       overflow: hidden;
       flex-shrink: 0;
@@ -186,12 +188,19 @@
       font-weight: bold;
     }
 
+    .card .thumbn img{
+      width: 50%;
+      height: 100px;
+      object-fit: cover;
+
+    }
+
     footer {
-      background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(93, 46, 15, 0.95));
+     background: linear-gradient(135deg, rgba(250, 110, 23, 0.95), rgb(176, 43, 72));
       padding: 2rem;
       text-align: center;
       margin-top: 4rem;
-      color: #ffd700;
+      color: #ffffff;
       border-top: 3px solid #ffd700;
     }
 
@@ -213,6 +222,46 @@
         justify-content: center;
       }
     }
+
+
+.miditems{
+  margin: 30px;
+  text-align: center;
+}
+
+
+.offers-section {
+    text-align: center;
+}
+.offers-section h2{
+    color: #fff;
+    /* font-size: 2em; */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.offers-section .item-list {
+    font-size: 1.1em;
+    line-height: 1.8;
+    list-style: none;
+}
+
+.offers-section .item-list span {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.offers-section .item-list span:hover {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(179, 71, 0, 0.2);
+    transform: scale(1.05);
+}
+
+
 
     /* ===== Carousel styles ===== */
     .carousel {
@@ -249,7 +298,7 @@
 
     .carousel__slide img {
       width: 50%;
-      height: 620px;
+      height: 600px;
       object-fit: cover;
       border-radius: 8px;
     }
@@ -303,8 +352,8 @@
 
     @media (max-width: 640px) {
       .carousel__slide img {
-        height: 620px;
-        width:90%;
+        height: 500px;
+        width:70%;
       }
 
       .carousel__control {
