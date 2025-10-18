@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crackers Shop Price Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background: linear-gradient(135deg, #fff8f0 0%, #ffe5d9 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    h2 {
+      color: #e63946;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    .mode-toggle {
+      margin: 15px 0;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+    }
+    .mode-btn {
+      padding: 8px 20px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    .mode-btn.active {
+      background: #2a9d8f;
+      color: white;
+      border-color: #2a9d8f;
+    }
+    .mode-btn.test.active {
+      background: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+    input {
+      padding: 12px;
+      width: 85%;
+      font-size: 18px;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    .btn {
+      padding: 12px 25px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 5px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    .save-btn {
+      background: #2a9d8f;
+    }
+    .save-btn:hover {
+      background: #238276;
+      transform: translateY(-2px);
+    }
+    .qr-btn {
+      background: #6366f1;
+    }
+    .qr-btn:hover {
+      background: #4f46e5;
+      transform: translateY(-2px);
+    }
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      display: none;
+    }
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      display: block;
+    }
+    .message.info {
+      background: #fff3cd;
+      color: #856404;
+      display: block;
+    }
+    .qr-section {
+      margin-top: 25px;
+      padding: 20px;
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+      border-radius: 12px;
+      border: 2px solid #4dd0e1;
+    }
+    .qr-section h3 {
+      color: #00838f;
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .quick-qr-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    .quick-qr-btn {
+      padding: 10px 20px;
+      background: #26c6da;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .quick-qr-btn:hover {
+      background: #00acc1;
+      transform: scale(1.05);
+    }
+    .qr-display {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .qr-display.show {
+      display: block;
+    }
+    .qr-display img {
+      max-width: 250px;
+      height: auto;
+      border: 3px solid #00838f;
+      border-radius: 8px;
+      padding: 10px;
+      background: white;
+    }
+    .qr-info {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #00838f;
+      font-weight: bold;
+    }
+    .download-section {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e9ecef;
+      border-radius: 8px;
+    }
+    .download-btn {
+      padding: 10px 20px;
+      background: #495057;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .download-btn:hover {
+      background: #343a40;
+      transform: translateY(-2px);
+    }
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .close-qr-btn {
+      background: #dc3545;
+      padding: 8px 16px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .close-qr-btn:hover {
+      background: #c82333;
+    }
+
+     input {
+      width: 280px;
+      padding: 12px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    #expression, #result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+      text-align: center;
+      margin-top: 10px;
+    }
+    #expression {
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎆 Price Calculator</h2>
+    
+    <div class="mode-toggle">
+      <span style="font-weight: bold; margin-right: 5px;">Mode:</span>
+      <button class="mode-btn test active" onclick="setMode('test')">🧪 Test Mode</button>
+      <button class="mode-btn working" onclick="setMode('working')">💼 Working Mode</button>
+    </div>
+
+    <input type="number" id="priceInput" placeholder="Enter Price ₹" oninput="updatePrice()">
+    <div class="result" id="result">Total Price: ₹0</div>
+    
+    <div class="action-buttons">
+      <button class="btn save-btn" id="saveBtn" onclick="saveTransaction()" disabled>💾 Save Transaction</button>
+      <button class="btn qr-btn" id="generateQrBtn" onclick="generateCustomQR()" disabled>📱 Generate QR Code</button>
+    </div>
+
+    
+    <div class="message" id="message"></div>
+
+
+
+
+     <h2>🧮 Smart Calculator</h2>
+  <p>Space = + , * = ×</p>
+
+  <input type="text" id="inputBox" placeholder="Example: 15 30 4*5">
+  <div id="expression">Expression: </div>
+  <div id="resultfor">Result: 0</div>
+
+
+
+    <div class="qr-section">
+      <h3>⚡ Quick Payment QR Codes</h3>
+      <p style="font-size: 14px; color: #00695c; margin: 5px 0;">Generate instant QR codes for common amounts:</p>
+      <div class="quick-qr-btns">
+        <button class="quick-qr-btn" onclick="generatePredefinedQR(299)">₹299</button>
+        <button class="quick-qr-btn" onclick="generatePredefinedQR(499)">₹499</button>
+        <button class="quick-qr-btn" onclick="generatePredefinedQR(699)">₹699</button>
+        <button class="quick-qr-btn" onclick="generatePredefinedQR(999)">₹999</button>
+      </div>
+      
+      <div class="qr-display" id="qrDisplay">
+        <div class="qr-info" id="qrInfo">Payment QR Code</div>
+        <br>
+        <img id="qrImage" src="" alt="QR Code">
+        <br>
+        <button class="close-qr-btn" onclick="closeQR()">✕ Close</button>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <h3 style="margin-top: 0; color: #495057;">📊 Download Records</h3>
+      <button class="download-btn" onclick="downloadTransactions()">Download All Transactions</button>
+      <p style="font-size: 12px; color: #6c757d; margin: 10px 0 0 0;">
+        Total saved: <span id="recordCount">0</span> transactions
+      </p>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczNXDnEtBpEEZwXccGL1j1O5uDlVLkD6NvOTeBfGs5CEk7Lj37OWEdS2TlI2Y8BP9AU7Chs4kBlFhtJ2Q_bFgdwLO82n1XsAJUh1_-VxbomHtczhYv6jTb6uPpOFJaUjp_E1d0NzFoc0aPlQY7tRIkfk=w672-h856-s-no-gm?authuser=0" alt="payment" width="400" style="max-width: 100%; height: auto;">
+  </div>
+
+  <script>
+    let currentMode = 'test';
+    let transactions = [];
+    let currentCalculation = null;
+
+    function loadTransactions() {
+      const stored = localStorage.getItem("transactions");
+      transactions = stored ? JSON.parse(stored) : [];
+      updateRecordCount();
+    }
+
+    function updateRecordCount() {
+      document.getElementById('recordCount').textContent = transactions.length;
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.mode-btn.${mode}`).classList.add('active');
+      
+      const message = document.getElementById('message');
+      if (mode === 'test') {
+        message.className = 'message info';
+        message.textContent = '🧪 Test Mode: Transactions will NOT be saved';
+        message.style.display = 'block';
+      } else {
+        message.style.display = 'none';
+      }
+    }
+
+    function updatePrice() {
+      let price = parseFloat(document.getElementById("priceInput").value);
+      
+      if (!price || price <= 0) {
+        document.getElementById("result").innerHTML = 'Total Price: ₹0';
+        document.getElementById("saveBtn").disabled = true;
+        document.getElementById("generateQrBtn").disabled = true;
+        currentCalculation = null;
+        return;
+      }
+
+      currentCalculation = {
+        totalPrice: price
+      };
+
+      document.getElementById("result").innerHTML = `Total Price: ₹${price.toFixed(2)}`;
+      
+      document.getElementById("saveBtn").disabled = false;
+      document.getElementById("generateQrBtn").disabled = false;
+    }
+
+    function saveTransaction() {
+      if (!currentCalculation) return;
+
+      const now = new Date();
+      const id = now.toISOString().replace(/[:.]/g, '-');
+      
+      const transaction = {
+        id: id,
+        timestamp: now.toISOString(),
+        dateTime: now.toLocaleString('en-IN', { 
+          timeZone: 'Asia/Kolkata',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }),
+        amount: currentCalculation.totalPrice,
+        mode: currentMode
+      };
+
+      const message = document.getElementById('message');
+
+      if (currentMode === 'test') {
+        message.className = 'message info';
+        message.textContent = '🧪 Test Mode: Transaction NOT saved (for checking only)';
+        message.style.display = 'block';
+        console.log('Test transaction (not saved):', transaction);
+      } else {
+        transactions.push(transaction);
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+        message.className = 'message success';
+        message.textContent = `✅ Transaction saved successfully! ID: ${id}`;
+        message.style.display = 'block';
+        console.log('Transaction saved:', transaction);
+        updateRecordCount();
+      }
+
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 5000);
+    }
+
+    function generateCustomQR() {
+      if (!currentCalculation) return;
+      
+      const amount = Math.round(currentCalculation.totalPrice);
+      const qrDisplay = document.getElementById('qrDisplay');
+      const qrImage = document.getElementById('qrImage');
+      const qrInfo = document.getElementById('qrInfo');
+      
+      qrImage.src = `https://qrcode123.pythonanywhere.com/api/upi_qr?amount=${amount}`;
+      qrInfo.textContent = `Payment QR Code - Amount: ₹${amount}`;
+      qrDisplay.classList.add('show');
+      
+      qrDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function generatePredefinedQR(amount) {
+      const qrDisplay = document.getElementById('qrDisplay');
+      const qrImage = document.getElementById('qrImage');
+      const qrInfo = document.getElementById('qrInfo');
+      
+      qrImage.src = `https://qrcode123.pythonanywhere.com/api/predefined_qr/${amount}`;
+      qrInfo.textContent = `Quick Payment QR Code - Amount: ₹${amount}`;
+      qrDisplay.classList.add('show');
+      
+      qrDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closeQR() {
+      document.getElementById('qrDisplay').classList.remove('show');
+    }
+
+    function downloadTransactions() {
+      if (transactions.length === 0) {
+        alert('No transactions to download!');
+        return;
+      }
+
+      const pass = prompt("🔒 Enter Owner Password to download:");
+      if (pass !== "harshita@123") {
+        alert("❌ Wrong password! Access denied.");
+        return;
+      }
+
+      const dataStr = JSON.stringify(transactions, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `crackers_transactions_${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize on page load
+    loadTransactions();
+
+  const inputBox = document.getElementById('inputBox');
+    const resultDiv = document.getElementById('resultfor');
+    const expressionDiv = document.getElementById('expression');
+
+    inputBox.addEventListener('input', () => {
+      let expression = inputBox.value.trim();
+
+      if (!expression) {
+        expressionDiv.textContent = "Expression:";
+        resultDiv.textContent = "Result: 0";
+        return;
+      }
+
+      // Show interpreted expression
+      let displayExpr = expression.replace(/\s+/g, ' + ');
+      displayExpr = displayExpr.replace(/(\d+\*\d+)/g, '($1)');
+      expressionDiv.textContent = "Expression: " + displayExpr;
+
+      // Evaluate total
+      let evalExpr = expression.replace(/\s+/g, '+');
+      try {
+        let total = eval(evalExpr || "0");
+        if (isNaN(total)) total = 0;
+        resultDiv.textContent = "Result: " + total;
+      } catch {
+        resultDiv.textContent = "Result: Invalid";
+      }
+    });
+
+  </script>
+</body>
+</html>
